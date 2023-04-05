@@ -11,9 +11,10 @@ export const parseAlarm = (message: string): IAlarm => {
 
 export const parseRegion = (message: string): string => {
   const tokens = alarms.map(alarm => `${alarm.token} в `);
-  const regionRegExp = new RegExp(`(?<=${tokens.join("|")})[^.\n*]*`);
+  const regionRegExp = new RegExp(`(?<=${tokens.join("|")})[^\n*]*`);
   const regionMatches = message.match(regionRegExp) || [];
-  return regionMatches[0] as string;
+  const regionMatch = regionMatches[0] as string;
+  return regionMatch.endsWith(".") ? regionMatch.slice(0, -1) : regionMatch;
 }
 
 export const parseTime = (message: string): string => {
