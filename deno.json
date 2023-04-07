@@ -4,6 +4,7 @@
   },
   "imports": {
     "socket.io": "https://deno.land/x/socket_io@0.2.0/mod.ts",
+    "mongo": "https://deno.land/x/mongo@v0.31.2/mod.ts",
     "grm/": "https://deno.land/x/grm@0.8.0/",
     "std/": "https://deno.land/std@0.182.0/"
   }
