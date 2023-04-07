@@ -12,7 +12,7 @@ export const parseAlarm = (message: string): IAlarm => {
 
 export const parseRegion = (message: string): string => {
   const tokens = alarms.map(alarm => `${alarm.token} в `);
-  const regionRegExp = new RegExp(`(?<=${tokens.join("|")}|Зараз у )[^\n*]*`);
+  const regionRegExp = new RegExp(`((?<=${tokens.join("|")})[^\n*]*)|(?<=Зараз у )[^\n*]*(?= артилерійський обстріл)`);
   const regionMatches = message.match(regionRegExp);
   if (!regionMatches) throw new Error("No alarm region found");
   const regionMatch = regionMatches[0] as string;
