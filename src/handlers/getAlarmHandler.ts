@@ -6,7 +6,7 @@ export const requestSchema = z.object({
   region: z.string()
 });
 
-export const getAlarmHandler = async (socket: Socket, request: any) => {
+export const getAlarmHandler = (socket: Socket) => async (request: any) => {
   try {
     const { region } = requestSchema.parse(request);
     const alarmEvent = await alarmService.findEventByRegion(region);

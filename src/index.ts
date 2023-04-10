@@ -61,7 +61,7 @@ tgclient.addEventHandler(async event => {
 
 io.on("connection", socket => {
   socket.emit("Connected!");
-  socket.on("alarm", getAlarmHandler);
+  socket.on("alarm", getAlarmHandler(socket));
 });
 
 serve(io.handler(), { port });
