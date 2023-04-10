@@ -6,6 +6,7 @@ import { LogLevel, Logger } from "grm/src/extensions/logger.ts";
 import { getAlarmEvent } from "./utils/parser.ts";
 import { MongoClient } from "mongo";
 import { alarmService } from "./services/alarmService.ts";
+import { getAlarmHandler } from "./handlers/getAlarmHandler.ts";
 
 const env = await load({ allowEmptyValues: true });
 
@@ -59,7 +60,8 @@ tgclient.addEventHandler(async event => {
 }));
 
 io.on("connection", socket => {
-  socket.emit("Welcome!");
+  socket.emit("Connected!");
+  socket.on("alarm", getAlarmHandler);
 });
 
 serve(io.handler(), { port });

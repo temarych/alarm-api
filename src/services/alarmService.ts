@@ -15,6 +15,11 @@ export class AlarmService {
       upsert: true 
     });
   }
+
+  public async findEventByRegion(region: string) {
+    const collection = db.collection<Document<IAlarmEvent>>("AlarmEvent");
+    return await collection.findOne({ region });
+  }
 }
 
 export const alarmService = new AlarmService();

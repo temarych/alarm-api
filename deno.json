@@ -2,9 +2,15 @@
   "tasks": {
     "dev": "deno run --watch -A ./src/index.ts"
   },
+  "lint": {
+    "rules": {
+      "exclude": ["no-explicit-any"]
+    }
+  },
   "imports": {
     "socket.io": "https://deno.land/x/socket_io@0.2.0/mod.ts",
     "mongo": "https://deno.land/x/mongo@v0.31.2/mod.ts",
+    "zod": "https://deno.land/x/zod@v3.21.4/mod.ts",
     "grm/": "https://deno.land/x/grm@0.8.0/",
     "std/": "https://deno.land/std@0.182.0/"
   }
